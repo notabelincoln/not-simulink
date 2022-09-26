@@ -3,11 +3,11 @@
  * not-simulink
  * block-functions.c
  */
-#include "block-functions.h"
 #include <stdlib.h>
+#include "block-functions.h"
 
 /* initialize generic block */
-struct block *init_block(void)
+struct block *block_init(void)
 {
 	struct block *ret_block;
 
@@ -17,7 +17,7 @@ struct block *init_block(void)
 }
 
 /* initialize generic block */
-int set_block_position(void *block_in, int x, int y)
+int set_block_position(struct block *block_in, int x, int y)
 {
 	block_in->x = x;
 	block_in->y = y;
@@ -26,16 +26,21 @@ int set_block_position(void *block_in, int x, int y)
 }
 
 /* initialize transfer function block */
-struct block_tf *init_block_tf(void)
+struct block_tf *block_tf_init(void)
 {
 	struct block_tf *ret_block_tf;
 
 	ret_block_tf = calloc(1, sizeof(struct block_tf));
-	ret_block_tf->block_base = init_block();
+	ret_block_tf->block_base = block_init();
 
 	return ret_block_tf;
 }
 
 /* set transfer function coefficients */
-int set_tf_coefficients(struct block_tf *input_block, double *num, double *den);
+int block_tf_set_coefficients(struct block_tf *input_block,
+			      double *num,
+			      double *den)
+{
+	return 0;
+}
 

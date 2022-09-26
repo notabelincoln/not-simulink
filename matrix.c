@@ -76,7 +76,7 @@ int matrix_free(struct matrix *mtrx)
 		return -1;
 
 	if ((mtrx->values) != NULL)
-		free(mtrx->values)
+		free(mtrx->values);
 	
 	free(mtrx);
 
